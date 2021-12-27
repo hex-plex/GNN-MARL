@@ -109,7 +109,7 @@ def run_sequential(args, logger):
 
     # Give runner the scheme
     runner.setup(scheme=scheme, groups=groups, preprocess=preprocess, mac=mac)
-    
+    print("runner setup")
     # Learner
     learner = le_REGISTRY[args.learner](mac, buffer.scheme, logger, args)
 
@@ -159,7 +159,7 @@ def run_sequential(args, logger):
     last_time = start_time
 
     logger.console_logger.info("Beginning training for {} timesteps".format(args.t_max))
-    
+
     while runner.t_env <= args.t_max:
 
         # Run for a whole episode at a time

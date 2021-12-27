@@ -1,0 +1,122 @@
+[INFO 19:17:44] pymarl Running command 'my_main'
+[INFO 19:17:44] pymarl Started run with ID "12"
+[DEBUG 19:17:44] my_main Started
+[INFO 19:17:44] my_main Experiment Parameters:
+[INFO 19:17:44] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'agent': 'rnn',
+    'agent_dist': True,
+    'agent_output_type': 'q',
+    'batch_size': 32,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'critic_lr': 0.0005,
+    'double_q': True,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': '2s3z',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 640132973,
+                    'state_last_action': True,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'gamma': 0.99,
+    'gnn': 'gcn',
+    'grad_norm_clip': 10,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 10000,
+    'lr': 0.0005,
+    'mac': 'basic_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'msg_hidden_dim': 64,
+    'msg_out_size': 48,
+    'name': 'qmix',
+    'num_layers': 2,
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'repeat_id': 1,
+    'rnn_hidden_dim': 64,
+    'runner': 'episode',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 2000000,
+    'save_replay': False,
+    'seed': 640132973,
+    't_max': 2050000,
+    'target_update_interval': 200,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'unit_type': True,
+    'use_cuda': True,
+    'use_tensorboard': False}
+
+[INFO 19:17:50] my_main Beginning training for 2050000 timesteps
+[INFO 19:17:50] absl Launching SC2: /home/hexplex0xff/marl/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 18532 -dataDir /home/hexplex0xff/marl/StarCraftII/ -tempDir /tmp/sc-w508kuua/
+[INFO 19:17:50] absl Connecting to: ws://127.0.0.1:18532/sc2api, attempt: 0, running: True
+Version: B75689 (SC2.4.10)
+Build: Aug 12 2019 17:16:57
+Command Line: '"/home/hexplex0xff/marl/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 18532 -dataDir /home/hexplex0xff/marl/StarCraftII/ -tempDir /tmp/sc-w508kuua/'
+Starting up...
+Startup Phase 1 complete
+[INFO 19:17:51] absl Connecting to: ws://127.0.0.1:18532/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+[INFO 19:17:52] absl Connecting to: ws://127.0.0.1:18532/sc2api, attempt: 2, running: True
+Listening on: 127.0.0.1:18532
+Startup Phase 3 complete. Ready for commands.
+[INFO 19:17:53] absl Connecting to: ws://127.0.0.1:18532/sc2api, attempt: 3, running: True
+ConnectHandler: Request from 127.0.0.1:42492 accepted
+ReadyHandler: 127.0.0.1:42492 ready
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8

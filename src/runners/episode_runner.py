@@ -53,7 +53,7 @@ class EpisodeRunner:
         self.mac.init_hidden(batch_size=self.batch_size)
 
         while not terminated:
-
+            #print("runner runs")
             pre_transition_data = {
                 "state": [self.env.get_state()],
                 "avail_actions": [self.env.get_avail_actions()],
@@ -61,14 +61,15 @@ class EpisodeRunner:
             }
 
             self.batch.update(pre_transition_data, ts=self.t)
-
+            #print("FFF")
             # Pass the entire batch of experiences up till now to the agents
             # Receive the actions for each agent at this timestep in a batch of size 1
             actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env, test_mode=test_mode)
-
+            #print(actions.shape)
+            #print(actions[0])
             reward, terminated, env_info = self.env.step(actions[0])
             episode_return += reward
-
+            #print("This works right")
             post_transition_data = {
                 "actions": actions,
                 "reward": [(reward,)],
