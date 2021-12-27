@@ -1,4 +1,5 @@
 from modules.agents import REGISTRY as agent_REGISTRY
+from communication import REGISTRY as comm_REGISTRY
 from components.action_selectors import REGISTRY as action_REGISTRY
 import torch as th
 
@@ -9,7 +10,9 @@ class BasicMAC:
         self.n_agents = args.n_agents
         self.args = args
         input_shape = self._get_input_shape(scheme)
-        self._build_agents(input_shape)
+        
+        self._build_comm(input_shape)
+        self._build_agents(input_shape) # For dummy run self.args.msg_out_size)
         self.agent_output_type = args.agent_output_type
 
         self.action_selector = action_REGISTRY[args.action_selector](args)
@@ -24,7 +27,8 @@ class BasicMAC:
         return chosen_actions
 
     def forward(self, ep_batch, t, test_mode=False):
-        agent_inputs = self._build_inputs(ep_batch, t)
+        comm_input = self._build_inputs(ep_batch, t)
+        agent_inputs = self._build_msg(comm_input)
         avail_actions = ep_batch["avail_actions"][:, t]
         agent_outs, self.hidden_states = self.agent(agent_inputs, self.hidden_states)
 
@@ -57,22 +61,33 @@ class BasicMAC:
         self.hidden_states = self.agent.init_hidden().unsqueeze(0).expand(batch_size, self.n_agents, -1)  # bav
 
     def parameters(self):
-        return self.agent.parameters()
+        return list(self.agent.parameters())+list(self.gnn.parameters())
 
     def load_state(self, other_mac):
         self.agent.load_state_dict(other_mac.agent.state_dict())
+        self.gnn.load_state_dict(other_mac.gnn.state_dict())
 
     def cuda(self):
         self.agent.cuda()
+        self.gnn.cuda()
 
     def save_models(self, path):
         th.save(self.agent.state_dict(), "{}/agent.th".format(path))
+        th.save(self.gnn.state_dict(), "{}/gnn.th".format(path))
 
     def load_models(self, path):
         self.agent.load_state_dict(th.load("{}/agent.th".format(path), map_location=lambda storage, loc: storage))
-
+        self.gnn.load_state_dict(th.load("{}/gnn.th".format(path), map_location=lambda storage, loc: storage))
+        
     def _build_agents(self, input_shape):
         self.agent = agent_REGISTRY[self.args.agent](input_shape, self.args)
+
+    def _build_comm(self, input_shape):
+        self.gnn = comm_REGISTRY[self.args.gnn](input_shape, self.args)
+
+    def _build_msg(self, batch):
+        
+        return batch
 
     def _build_inputs(self, batch, t):
         # Assumes homogenous agents with flat observations.
