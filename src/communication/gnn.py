@@ -19,15 +19,15 @@ class GCNComm(torch.nn.Module):
             self.convs[i].cuda()
 
     def forward(self,x, adj_matrix):
-        x = []
-        for x_in, am_in in torch.unbind(x, dim=0), torch.unbind(adj_matrix, dim=0):
+        x_out = []
+        for x_in, am_in in zip(torch.unbind(x, dim=0), torch.unbind(adj_matrix, dim=0)):
             for i in range(self.args.num_layers):
                 x_in = self.convs[i](x_in, dense_to_sparse(am_in)[0])
                 if (i+1)<self.args.num_layers:
                     x_in = F.elu(x_in)
                     x_in = F.dropout(x_in, p=0.2, training=self.training)
-            x.append(x_in) 
-        return torch.stack(x, dim=0)
+            x_out.append(x_in) 
+        return torch.stack(x_out, dim=0)
     
 class GATComm(torch.nn.Module):
     def __init__(self, input_shape, args, training=True):

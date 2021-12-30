@@ -89,7 +89,7 @@ def run_sequential(args, logger):
         "state": {"vshape": env_info["state_shape"]},
         "obs": {"vshape": env_info["obs_shape"], "group": "agents"},
         "actions": {"vshape": (1,), "group": "agents", "dtype": th.long},
-        "adj_matrix": {"vshape":(n_agents,), "group": "agents", dtype:th.int},
+        "adj_matrix": {"vshape":(args.n_agents,), "group": "agents", "dtype":th.int},
         "avail_actions": {"vshape": (env_info["n_actions"],), "group": "agents", "dtype": th.int},
         "reward": {"vshape": (1,)},
         "terminated": {"vshape": (1,), "dtype": th.uint8},
