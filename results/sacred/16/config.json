@@ -76,7 +76,7 @@
   "save_model": true,
   "save_model_interval": 2000000,
   "save_replay": false,
-  "seed": 70181339,
+  "seed": 130727435,
   "t_max": 2050000,
   "target_update_interval": 200,
   "test_greedy": true,
@@ -84,5 +84,5 @@
   "test_nepisode": 32,
   "unit_type": true,
   "use_cuda": true,
-  "use_tensorboard": false
+  "use_tensorboard": true
 }

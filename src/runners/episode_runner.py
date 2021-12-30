@@ -57,7 +57,8 @@ class EpisodeRunner:
             pre_transition_data = {
                 "state": [self.env.get_state()],
                 "avail_actions": [self.env.get_avail_actions()],
-                "obs": [self.env.get_obs()]
+                "obs": [self.env.get_obs()],
+                "adj_matrix": [self.env.get_adj_matrix()]
             }
 
             self.batch.update(pre_transition_data, ts=self.t)
@@ -83,7 +84,8 @@ class EpisodeRunner:
         last_data = {
             "state": [self.env.get_state()],
             "avail_actions": [self.env.get_avail_actions()],
-            "obs": [self.env.get_obs()]
+            "obs": [self.env.get_obs()],
+            "adj_matrix": [self.env.get_adj_matrix()]
         }
         self.batch.update(last_data, ts=self.t)
 

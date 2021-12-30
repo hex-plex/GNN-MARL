@@ -14,17 +14,17 @@
     "name": "pymarl",
     "repositories": [
       {
-        "commit": "a4d351d013d562de6b3fd23fd3c0c9a373ca0fa1",
+        "commit": "56db02a70a6341217437efeab7c0451193bd8cbb",
         "dirty": true,
         "url": "git@github.com:oxwhirl/pymarl.git"
       },
       {
-        "commit": "a4d351d013d562de6b3fd23fd3c0c9a373ca0fa1",
+        "commit": "56db02a70a6341217437efeab7c0451193bd8cbb",
         "dirty": true,
         "url": "git@github.com:oxwhirl/pymarl.git"
       },
       {
-        "commit": "a4d351d013d562de6b3fd23fd3c0c9a373ca0fa1",
+        "commit": "56db02a70a6341217437efeab7c0451193bd8cbb",
         "dirty": true,
         "url": "git@github.com:oxwhirl/pymarl.git"
       }
@@ -49,13 +49,13 @@
     "  File \"/home/hexplex0xff/marl/marl/lib/python3.6/site-packages/sacred/config/captured_function.py\", line 48, in captured_function\n    result = wrapped(*args, **kwargs)\n",
     "  File \"src/main.py\", line 35, in my_main\n    run(_run, config, _log)\n",
     "  File \"/home/hexplex0xff/marl/pymarl/src/run.py\", line 48, in run\n    run_sequential(args=args, logger=logger)\n",
-    "  File \"/home/hexplex0xff/marl/pymarl/src/run.py\", line 166, in run_sequential\n    episode_batch = runner.run(test_mode=False)\n",
-    "  File \"/home/hexplex0xff/marl/pymarl/src/runners/episode_runner.py\", line 69, in run\n    reward, terminated, env_info = self.env.step(actions[0])\n",
-    "  File \"/home/hexplex0xff/marl/pymarl/smac/smac/env/starcraft2/starcraft2.py\", line 482, in step\n    exit()\n",
-    "  File \"/usr/lib/python3.6/_sitebuiltins.py\", line 26, in __call__\n    raise SystemExit(code)\n",
-    "SystemExit: None\n"
+    "  File \"/home/hexplex0xff/marl/pymarl/src/run.py\", line 209, in run_sequential\n    logger.print_recent_stats()\n",
+    "  File \"/home/hexplex0xff/marl/pymarl/src/utils/logging.py\", line 50, in print_recent_stats\n    item = \"{:.4f}\".format(np.mean([np.array(fix(x[1])) for x in self.stats[k][-window:]]))\n",
+    "  File \"/home/hexplex0xff/marl/pymarl/src/utils/logging.py\", line 50, in <listcomp>\n    item = \"{:.4f}\".format(np.mean([np.array(fix(x[1])) for x in self.stats[k][-window:]]))\n",
+    "  File \"/home/hexplex0xff/marl/pymarl/src/utils/logging.py\", line 48, in <lambda>\n    fix = lambda x: x.cpu() if isinstance(x, th.Tensor) else x\n",
+    "NameError: name 'th' is not defined\n"
   ],
-  "heartbeat": "2021-12-27T13:50:07.039086",
+  "heartbeat": "2021-12-27T14:58:24.294180",
   "host": {
     "ENV": {},
     "cpu": "AMD Ryzen 5 3550H with Radeon Vega Mobile Gfx",
@@ -107,7 +107,7 @@
   },
   "resources": [],
   "result": null,
-  "start_time": "2021-12-27T13:49:49.969624",
+  "start_time": "2021-12-27T14:53:55.627551",
   "status": "FAILED",
-  "stop_time": "2021-12-27T13:50:07.043113"
+  "stop_time": "2021-12-27T14:58:24.301731"
 }

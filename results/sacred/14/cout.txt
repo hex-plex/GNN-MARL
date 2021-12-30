@@ -1,8 +1,8 @@
-[INFO 19:19:49] pymarl Running command 'my_main'
-[INFO 19:19:49] pymarl Started run with ID "14"
-[DEBUG 19:19:49] my_main Started
-[INFO 19:19:49] my_main Experiment Parameters:
-[INFO 19:19:49] my_main 
+[INFO 20:23:55] pymarl Running command 'my_main'
+[INFO 20:23:55] pymarl Started run with ID "14"
+[DEBUG 20:23:55] my_main Started
+[INFO 20:23:55] my_main Experiment Parameters:
+[INFO 20:23:55] my_main 
 
 {   'action_selector': 'epsilon_greedy',
     'agent': 'rnn',
@@ -41,7 +41,7 @@
                     'reward_scale_rate': 20,
                     'reward_sparse': False,
                     'reward_win': 200,
-                    'seed': 300197022,
+                    'seed': 286476840,
                     'state_last_action': True,
                     'state_timestep_number': False,
                     'step_mul': 8},
@@ -79,7 +79,7 @@
     'save_model': True,
     'save_model_interval': 2000000,
     'save_replay': False,
-    'seed': 300197022,
+    'seed': 286476840,
     't_max': 2050000,
     'target_update_interval': 200,
     'test_greedy': True,
@@ -87,25 +87,24 @@
     'test_nepisode': 32,
     'unit_type': True,
     'use_cuda': True,
-    'use_tensorboard': False}
+    'use_tensorboard': True}
 
-[INFO 19:19:55] my_main Beginning training for 2050000 timesteps
-[INFO 19:19:55] absl Launching SC2: /home/hexplex0xff/marl/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 22124 -dataDir /home/hexplex0xff/marl/StarCraftII/ -tempDir /tmp/sc-p3b31avn/
-[INFO 19:19:56] absl Connecting to: ws://127.0.0.1:22124/sc2api, attempt: 0, running: True
+[INFO 20:23:58] my_main Beginning training for 2050000 timesteps
+[INFO 20:23:58] absl Launching SC2: /home/hexplex0xff/marl/StarCraftII/Versions/Base75689/SC2_x64 -listen 127.0.0.1 -port 18284 -dataDir /home/hexplex0xff/marl/StarCraftII/ -tempDir /tmp/sc-1mmnrweh/
+[INFO 20:23:58] absl Connecting to: ws://127.0.0.1:18284/sc2api, attempt: 0, running: True
 Version: B75689 (SC2.4.10)
 Build: Aug 12 2019 17:16:57
-Command Line: '"/home/hexplex0xff/marl/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 22124 -dataDir /home/hexplex0xff/marl/StarCraftII/ -tempDir /tmp/sc-p3b31avn/'
+Command Line: '"/home/hexplex0xff/marl/StarCraftII/Versions/Base75689/SC2_x64" -listen 127.0.0.1 -port 18284 -dataDir /home/hexplex0xff/marl/StarCraftII/ -tempDir /tmp/sc-1mmnrweh/'
 Starting up...
 Startup Phase 1 complete
-[INFO 19:19:57] absl Connecting to: ws://127.0.0.1:22124/sc2api, attempt: 1, running: True
+[INFO 20:23:59] absl Connecting to: ws://127.0.0.1:18284/sc2api, attempt: 1, running: True
 Startup Phase 2 complete
 Creating stub renderer...
-[INFO 19:19:58] absl Connecting to: ws://127.0.0.1:22124/sc2api, attempt: 2, running: True
-Listening on: 127.0.0.1:22124
+Listening on: 127.0.0.1:18284
 Startup Phase 3 complete. Ready for commands.
-[INFO 19:19:59] absl Connecting to: ws://127.0.0.1:22124/sc2api, attempt: 3, running: True
-ConnectHandler: Request from 127.0.0.1:51246 accepted
-ReadyHandler: 127.0.0.1:51246 ready
+[INFO 20:24:00] absl Connecting to: ws://127.0.0.1:18284/sc2api, attempt: 2, running: True
+ConnectHandler: Request from 127.0.0.1:41818 accepted
+ReadyHandler: 127.0.0.1:41818 ready
 Requesting to join a single player game
 Configuring interface options
 Configure: raw interface enabled
@@ -120,3 +119,14 @@ Next launch phase started: 5
 Next launch phase started: 6
 Next launch phase started: 7
 Next launch phase started: 8
+Game has started.
+Using default stable ids, none found at: /home/hexplex0xff/marl/StarCraftII/stableid.json
+Successfully loaded stable ids: GameData\stableid.json
+Sending ResponseJoinGame
+/home/hexplex0xff/marl/pymarl/src/components/episode_buffer.py:103: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:201.)
+  v = th.tensor(v, dtype=dtype, device=self.device)
+/home/hexplex0xff/marl/pymarl/src/components/episode_buffer.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 20:24:06] my_main t_env: 51 / 2050000
+[INFO 20:24:06] my_main Estimated time left: 25 minutes, 56 seconds. Time passed: 7 seconds
+[INFO 20:24:45] my_main Saving models to results/models/qmix__2021-12-27_20-23-55/51

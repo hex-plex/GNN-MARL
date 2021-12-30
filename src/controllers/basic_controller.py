@@ -12,7 +12,7 @@ class BasicMAC:
         input_shape = self._get_input_shape(scheme)
         
         self._build_comm(input_shape)
-        self._build_agents(input_shape) # For dummy run self.args.msg_out_size)
+        self._build_agents(self.args.msg_out_size)
         self.agent_output_type = args.agent_output_type
 
         self.action_selector = action_REGISTRY[args.action_selector](args)
@@ -27,9 +27,8 @@ class BasicMAC:
         return chosen_actions
 
     def forward(self, ep_batch, t, test_mode=False):
-        #comm_input
-        agent_inputs = self._build_inputs(ep_batch, t)
-        #agent_inputs = self._build_msg(comm_input)
+        comm_input = self._build_inputs(ep_batch, t)
+        agent_inputs = self._build_msg(comm_input, ep_batch.batch_size)
         avail_actions = ep_batch["avail_actions"][:, t]
         agent_outs, self.hidden_states = self.agent(agent_inputs, self.hidden_states)
         
@@ -70,7 +69,7 @@ class BasicMAC:
 
     def cuda(self):
         self.agent.cuda()
-        self.gnn.cuda()
+        self.gnn.cuda_transfer()
 
     def save_models(self, path):
         th.save(self.agent.state_dict(), "{}/agent.th".format(path))
@@ -86,9 +85,20 @@ class BasicMAC:
     def _build_comm(self, input_shape):
         self.gnn = comm_REGISTRY[self.args.gnn](input_shape, self.args)
 
-    def _build_msg(self, batch):
-        
-        return batch
+    def _build_msg(self, batch, batch_size):
+        inp_obs = batch.reshape(batch_size, self.n_agents, -1).cuda()
+        edge_index = th.transpose( th.tensor([ [i,i+1] for i in range(self.n_agents-1) ], ), 0, 1).cuda()
+        edge_index = self._fetch_heir(inp_obs)
+        #print(edge_index, inp_obs)
+        msg_enc = self.gnn(inp_obs, edge_index)
+        reshaped_msg_enc = msg_enc.reshape(batch_size*self.n_agents, -1)
+        return reshaped_msg_enc
+    
+    def _fetch_heir(self, obs):
+        edge_index = []
+        for i in range(self.n_agents):
+            pass
+            #obs[i][j] = 
 
     def _build_inputs(self, batch, t):
         # Assumes homogenous agents with flat observations.

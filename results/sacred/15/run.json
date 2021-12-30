@@ -14,17 +14,17 @@
     "name": "pymarl",
     "repositories": [
       {
-        "commit": "a4d351d013d562de6b3fd23fd3c0c9a373ca0fa1",
+        "commit": "56db02a70a6341217437efeab7c0451193bd8cbb",
         "dirty": true,
         "url": "git@github.com:oxwhirl/pymarl.git"
       },
       {
-        "commit": "a4d351d013d562de6b3fd23fd3c0c9a373ca0fa1",
+        "commit": "56db02a70a6341217437efeab7c0451193bd8cbb",
         "dirty": true,
         "url": "git@github.com:oxwhirl/pymarl.git"
       },
       {
-        "commit": "a4d351d013d562de6b3fd23fd3c0c9a373ca0fa1",
+        "commit": "56db02a70a6341217437efeab7c0451193bd8cbb",
         "dirty": true,
         "url": "git@github.com:oxwhirl/pymarl.git"
       }
@@ -40,22 +40,11 @@
       ],
       [
         "utils/logging.py",
-        "_sources/logging_dad45417fd04731c967c4965a6416127.py"
+        "_sources/logging_914fc3d000f5ad0f72bc60f6fa3b233a.py"
       ]
     ]
   },
-  "fail_trace": [
-    "Traceback (most recent call last):\n",
-    "  File \"/home/hexplex0xff/marl/marl/lib/python3.6/site-packages/sacred/config/captured_function.py\", line 48, in captured_function\n    result = wrapped(*args, **kwargs)\n",
-    "  File \"src/main.py\", line 35, in my_main\n    run(_run, config, _log)\n",
-    "  File \"/home/hexplex0xff/marl/pymarl/src/run.py\", line 48, in run\n    run_sequential(args=args, logger=logger)\n",
-    "  File \"/home/hexplex0xff/marl/pymarl/src/run.py\", line 166, in run_sequential\n    episode_batch = runner.run(test_mode=False)\n",
-    "  File \"/home/hexplex0xff/marl/pymarl/src/runners/episode_runner.py\", line 69, in run\n    reward, terminated, env_info = self.env.step(actions[0])\n",
-    "  File \"/home/hexplex0xff/marl/pymarl/smac/smac/env/starcraft2/starcraft2.py\", line 482, in step\n    exit()\n",
-    "  File \"/usr/lib/python3.6/_sitebuiltins.py\", line 26, in __call__\n    raise SystemExit(code)\n",
-    "SystemExit: None\n"
-  ],
-  "heartbeat": "2021-12-27T13:50:51.826964",
+  "heartbeat": "2021-12-27T23:56:25.415813",
   "host": {
     "ENV": {},
     "cpu": "AMD Ryzen 5 3550H with Radeon Vega Mobile Gfx",
@@ -107,7 +96,6 @@
   },
   "resources": [],
   "result": null,
-  "start_time": "2021-12-27T13:50:33.745698",
-  "status": "FAILED",
-  "stop_time": "2021-12-27T13:50:51.829567"
+  "start_time": "2021-12-27T15:11:56.189765",
+  "status": "RUNNING"
 }

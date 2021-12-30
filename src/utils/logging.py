@@ -1,6 +1,8 @@
 from collections import defaultdict
 import logging
 import numpy as np
+import torch as th
+
 
 class Logger:
     def __init__(self, console_logger):
