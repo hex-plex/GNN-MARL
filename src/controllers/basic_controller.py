@@ -28,7 +28,7 @@ class BasicMAC:
 
     def forward(self, ep_batch, t, test_mode=False):
         comm_input = self._build_inputs(ep_batch, t)
-        agent_inputs = self._build_msg(comm_input, ep_batch.batch_size)
+        agent_inputs = self._build_msg(comm_input, ep_batch.batch_size, ep_batch["adj_matrix"])
         avail_actions = ep_batch["avail_actions"][:, t]
         agent_outs, self.hidden_states = self.agent(agent_inputs, self.hidden_states)
         
@@ -85,12 +85,10 @@ class BasicMAC:
     def _build_comm(self, input_shape):
         self.gnn = comm_REGISTRY[self.args.gnn](input_shape, self.args)
 
-    def _build_msg(self, batch, batch_size):
+    def _build_msg(self, batch, batch_size, adj_matrix):
         inp_obs = batch.reshape(batch_size, self.n_agents, -1).cuda()
-        edge_index = th.transpose( th.tensor([ [i,i+1] for i in range(self.n_agents-1) ], ), 0, 1).cuda()
-        edge_index = self._fetch_heir(inp_obs)
         #print(edge_index, inp_obs)
-        msg_enc = self.gnn(inp_obs, edge_index)
+        msg_enc = self.gnn(inp_obs, adj_matrix)
         reshaped_msg_enc = msg_enc.reshape(batch_size*self.n_agents, -1)
         return reshaped_msg_enc
     
