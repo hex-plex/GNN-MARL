@@ -73,7 +73,6 @@ A brief outline would be as follows
 <i>Pipeline for communication using Graph Neural Network</i>
 </p>
 
-
 ## Results
 
 Uploading soon
