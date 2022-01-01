@@ -11,8 +11,8 @@ Currently we have the following algorithms for training.
 
 For communication we have used to different Architecures
 
-- [Graph Convolutional Network](https://arxiv.org/abs/1609.02907)
-- [Graph Attention Network](https://arxiv.org/abs/1710.10903)
+- [**GConv**: Graph Convolutional Network](https://arxiv.org/abs/1609.02907)
+- [**GAT**: Graph Attention Network](https://arxiv.org/abs/1710.10903)
 
 ### Graph Neural Network.
 
