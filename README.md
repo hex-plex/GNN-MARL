@@ -1,6 +1,6 @@
 # Graph Attention For Communication in MARL
 
-This is an implementation of Communication in MARL using Graph Neural Network. This is been trained and tested on [StarCraft II](), And this has shown improved training and performance metrics throughout all the maps. I have implemented this on top of [PyMARL]() for easier comparative study with respect to other algorithms or implementations like [ePyMARL](). 
+This is an implementation of Communication in MARL using Graph Neural Network. This is been trained and tested on [StarCraft II](https://github.com/deepmind/pysc2), And this has shown improved training and performance metrics throughout all the maps. I have implemented this on top of [PyMARL](https://github.com/oxwhirl/pymarl) for easier comparative study with respect to other algorithms or implementations like [ePyMARL](https://github.com/uoe-agents/epymarl). 
 
 Currently we have the following algorithms for training.
 - [**QMIX**: QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning](https://arxiv.org/abs/1803.11485)
