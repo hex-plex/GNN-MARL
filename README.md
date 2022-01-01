@@ -11,8 +11,19 @@ Currently we have the following algorithms for training.
 
 For communication we have used to different Architecures
 
-- [Graph Convolutional Network]()
-- [Graph Attention Network]()
+- [Graph Convolutional Network](https://arxiv.org/abs/1609.02907)
+- [Graph Attention Network](https://arxiv.org/abs/1710.10903)
+
+### Graph Neural Network.
+
+More Information about the architecture and the execution can be found at [MultiAgent GNN](https://hex-plex.github.io/project/gnn-marl/)
+A brief outline would be as follows
+
+<p align="center">
+<img src="media/gnn.png" />
+<i>Pipeline for communication using Graph Neural Network</i>
+</p>
+
 
 The implementation is written in PyTorch and uses a modified version of [SMAC](https://github.com/oxwhirl/smac) which could be found in [smac-py](/smac-py/) to include the adjacency matrix as the observation more detail on it can be found [here](#adjacency-matrix).
 
@@ -62,16 +73,6 @@ They are all located in `src/config`.
 All results will be stored in the `Results` folder.
 
 The previous config files used for the SMAC Beta have the suffix `_beta`.
-
-## Graph Neural Network.
-
-More Information about the architecture and the execution can be found at [MultiAgent GNN](https://hex-plex.github.io/project/gnn-marl/)
-A brief outline would be as follows
-
-<p align="center">
-<img src="media/gnn.png" />
-<i>Pipeline for communication using Graph Neural Network</i>
-</p>
 
 ## Results
 
