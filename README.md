@@ -74,6 +74,12 @@ All results will be stored in the `Results` folder.
 
 The previous config files used for the SMAC Beta have the suffix `_beta`.
 
+## Adjacency Matrix
+
+An adjacency matrix simply represents the vertices of the graph. For the current problem we have used a few heuristics for joining two nodes with a vertex. They are as below
+- **Communication distance** : - Even though their is no restriction in communication having local communication improves cooperation in shared tasks
+- **Unit Type** : - Many task benefit from similar units perfoming certain part of the task than other other units cooperating with each other.
+
 ## Results
 
 Uploading soon
