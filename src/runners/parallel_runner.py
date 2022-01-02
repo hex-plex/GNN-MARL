@@ -68,7 +68,8 @@ class ParallelRunner:
         pre_transition_data = {
             "state": [],
             "avail_actions": [],
-            "obs": []
+            "obs": [],
+            "adj_matrix": []
         }
         # Get the obs, state and avail_actions back
         for parent_conn in self.parent_conns:
@@ -76,6 +77,7 @@ class ParallelRunner:
             pre_transition_data["state"].append(data["state"])
             pre_transition_data["avail_actions"].append(data["avail_actions"])
             pre_transition_data["obs"].append(data["obs"])
+            pre_transition_data["adj_matrix"].append(data["adj_matrix"])
 
         self.batch.update(pre_transition_data, ts=0)
 
@@ -129,7 +131,8 @@ class ParallelRunner:
             pre_transition_data = {
                 "state": [],
                 "avail_actions": [],
-                "obs": []
+                "obs": [],
+                "adj_matrix": []
             }
 
             # Receive data back for each unterminated env
@@ -156,6 +159,7 @@ class ParallelRunner:
                     pre_transition_data["state"].append(data["state"])
                     pre_transition_data["avail_actions"].append(data["avail_actions"])
                     pre_transition_data["obs"].append(data["obs"])
+                    pre_transition_data["adj_matrix"].append(data["adj_matrix"])
 
             # Add post_transiton data into the batch
             self.batch.update(post_transition_data, bs=envs_not_terminated, ts=self.t, mark_filled=False)
@@ -223,11 +227,13 @@ def env_worker(remote, env_fn):
             state = env.get_state()
             avail_actions = env.get_avail_actions()
             obs = env.get_obs()
+            adj_matrix = env.get_adj_matrix()
             remote.send({
                 # Data for the next timestep needed to pick an action
                 "state": state,
                 "avail_actions": avail_actions,
                 "obs": obs,
+                "adj_matrix": adj_matrix,
                 # Rest of the data for the current timestep
                 "reward": reward,
                 "terminated": terminated,
@@ -238,7 +244,8 @@ def env_worker(remote, env_fn):
             remote.send({
                 "state": env.get_state(),
                 "avail_actions": env.get_avail_actions(),
-                "obs": env.get_obs()
+                "obs": env.get_obs(),
+                "adj_matrix": env.get_adj_matrix()
             })
         elif cmd == "close":
             env.close()
