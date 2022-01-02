@@ -27,6 +27,8 @@ A brief outline would be as follows
 
 The implementation is written in PyTorch and uses a modified version of [SMAC](https://github.com/oxwhirl/smac) which could be found in [smac-py](/smac-py/) to include the adjacency matrix as the observation more detail on it can be found [here](#adjacency-matrix).
 
+For a glimpse of the algorithm in action checkout the [**Output**](#output) section
+
 ## Installation instructions
 
 I have used the default installation given in PyMARL, along which I have added a few changes to work with the latest version of pytorch (i.e., 1.10.0 at the time of documentation.)  and added the requirements for the [pytorch_geometric]()
