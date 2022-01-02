@@ -82,4 +82,19 @@ An adjacency matrix simply represents the vertices of the graph. For the current
 
 ## Results
 
-Uploading soon
+Below are the training and test metric of the presented algorithm with **QMIX** on map 2s3z. The study is limited to the number of experiments due to limitation in computation at the disposal. The presented algorithm does support parallel envs and boosting the process of training. This would be tested soon
+
+
+|Train|--|
+|--|--|
+|Battle win percentage| Average Return|
+|![](media/train_battle_win_percentage.png)|![](media/train_return_mean.png)|
+
+|Test|--|
+|--|--|
+|Battle win percentage| Average Return|
+|![](media/test_battle_win_percentage.png)|![](media/test_return_mean.png)|
+
+## Output
+This is a demo output from the policy whose stats are given above
+![](media/output.gif) 
