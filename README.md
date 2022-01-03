@@ -100,3 +100,5 @@ Below are the training and test metric of the presented algorithm with **QMIX** 
 ## Output
 This is a demo output from the policy whose stats are given above
 ![](media/output.gif) 
+
+Weights and the logs can be found here [[Drive]](https://drive.google.com/drive/folders/1YVct3d932ny3G_pIfkEJ3UJTuhCji47P?usp=sharing).
